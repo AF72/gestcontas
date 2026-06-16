@@ -17,7 +17,7 @@ export function formatDate(date: string): string {
     day: '2-digit',
     month: 'short',
     year: 'numeric',
-  }).format(new Date(date))
+  }).format(new Date(date + 'T12:00:00'))
 }
 
 export function formatDateInput(date: string): string {

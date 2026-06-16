@@ -57,7 +57,7 @@ export type MovementFilters = {
 export type StatsByCategory = {
   category_id: string | null
   category_name: string
-  category_type: 'expense' | 'income'
+  category_type: Category['type']
   total: number
 }
 
