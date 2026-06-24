@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { createMovement, updateMovement } from '@/lib/actions/movements'
+import { createMovement, updateMovement, deleteMovement } from '@/lib/actions/movements'
 import { formatDateInput } from '@/lib/utils'
 import { getIconComponent } from '@/lib/icons'
 import type { Account, Category, Label as LabelType, Movement } from '@/lib/types'
@@ -62,6 +62,24 @@ export function MovementForm({
     }
 
     toast.success(movement ? 'Movimento actualizado.' : 'Movimento registado.')
+    router.refresh()
+    onSuccess?.()
+  }
+
+  async function handleDelete() {
+    if (!movement) return
+    if (!confirm('Tens a certeza? Esta acção não pode ser desfeita.')) return
+
+    setLoading(true)
+    const result = await deleteMovement(movement.id)
+    setLoading(false)
+
+    if (result?.error) {
+      toast.error(result.error)
+      return
+    }
+
+    toast.success('Movimento eliminado.')
     router.refresh()
     onSuccess?.()
   }
@@ -206,6 +224,18 @@ export function MovementForm({
       >
         {loading ? 'A guardar...' : movement ? 'Actualizar' : 'Guardar Movimento'}
       </Button>
+
+      {movement && (
+        <Button
+          type="button"
+          variant="ghost"
+          className="w-full text-red-500 hover:text-red-600 hover:bg-red-50"
+          disabled={loading}
+          onClick={handleDelete}
+        >
+          Eliminar Movimento
+        </Button>
+      )}
     </form>
   )
 }

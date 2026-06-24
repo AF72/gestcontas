@@ -2,17 +2,19 @@
 
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { MovementItem } from './movement-item'
+import { EditMovementSheet } from './edit-movement-sheet'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import type { Movement, Category, Label } from '@/lib/types'
+import type { Movement, Account, Category, Label } from '@/lib/types'
 
 type MovementListProps = {
   movements: Movement[]
+  accounts: Account[]
   categories: Category[]
   labels: Label[]
   accountId: string
 }
 
-export function MovementList({ movements, categories, labels, accountId }: MovementListProps) {
+export function MovementList({ movements, accounts, categories, labels, accountId }: MovementListProps) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -90,6 +92,13 @@ export function MovementList({ movements, categories, labels, accountId }: Movem
           ))}
         </div>
       )}
+
+      <EditMovementSheet
+        movements={movements}
+        accounts={accounts}
+        categories={categories}
+        labels={labels}
+      />
     </div>
   )
 }

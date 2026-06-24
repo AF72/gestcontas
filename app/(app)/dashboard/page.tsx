@@ -1,13 +1,17 @@
 import { formatCurrency } from '@/lib/utils'
 import { getAccountsWithStats } from '@/lib/queries/accounts'
 import { getRecentMovements } from '@/lib/queries/movements'
+import { getCategories } from '@/lib/queries/categories'
+import { getLabels } from '@/lib/queries/labels'
 import { AccountCard } from '@/components/accounts/account-card'
-import { MovementItem } from '@/components/movements/movement-item'
+import { RecentMovements } from '@/components/movements/recent-movements'
 
 export default async function DashboardPage() {
-  const [accounts, recentMovements] = await Promise.all([
+  const [accounts, recentMovements, categories, labels] = await Promise.all([
     getAccountsWithStats(),
     getRecentMovements(10),
+    getCategories(),
+    getLabels(),
   ])
 
   const totalBalance = accounts.reduce((sum, a) => sum + a.balance, 0)
@@ -62,11 +66,12 @@ export default async function DashboardPage() {
               <p className="text-xs mt-1">Toca em + para adicionar o primeiro.</p>
             </div>
           ) : (
-            <div className="space-y-2">
-              {recentMovements.map((movement) => (
-                <MovementItem key={movement.id} movement={movement} />
-              ))}
-            </div>
+            <RecentMovements
+              movements={recentMovements}
+              accounts={accounts}
+              categories={categories}
+              labels={labels}
+            />
           )}
         </section>
       </div>

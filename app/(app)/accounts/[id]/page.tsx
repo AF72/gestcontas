@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
-import { getAccountById } from '@/lib/queries/accounts'
+import { getAccountById, getAccounts } from '@/lib/queries/accounts'
 import { getMovementsByAccount } from '@/lib/queries/movements'
 import { getCategories } from '@/lib/queries/categories'
 import { getLabels } from '@/lib/queries/labels'
@@ -18,8 +18,9 @@ export default async function AccountDetailPage({ params, searchParams }: PagePr
   const { id } = await params
   const sp = await searchParams
 
-  const [account, categories, labels] = await Promise.all([
+  const [account, accounts, categories, labels] = await Promise.all([
     getAccountById(id),
+    getAccounts(),
     getCategories(),
     getLabels(),
   ])
@@ -55,6 +56,7 @@ export default async function AccountDetailPage({ params, searchParams }: PagePr
       <div className="px-4 pt-4">
         <MovementList
           movements={movements}
+          accounts={accounts}
           categories={categories}
           labels={labels}
           accountId={id}
