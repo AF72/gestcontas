@@ -163,7 +163,9 @@ export function MovementForm({
           disabled={isPreselected}
         >
           <SelectTrigger className="mt-1">
-            <SelectValue placeholder="Seleccionar conta" />
+            <SelectValue placeholder="Seleccionar conta">
+              {(value: string) => accounts.find((a) => a.id === value)?.name ?? 'Seleccionar conta'}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             {accounts.map((account) => (
@@ -180,7 +182,9 @@ export function MovementForm({
         <Label>Categoria</Label>
         <Select value={categoryId} onValueChange={(v) => setCategoryId(v ?? '')}>
           <SelectTrigger className="mt-1">
-            <SelectValue placeholder="Sem categoria" />
+            <SelectValue placeholder="Sem categoria">
+              {(value: string) => value ? categories.find((c) => c.id === value)?.name : 'Sem categoria'}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="">Sem categoria</SelectItem>
@@ -198,7 +202,9 @@ export function MovementForm({
         <Label>Label</Label>
         <Select value={labelId} onValueChange={(v) => setLabelId(v ?? '')}>
           <SelectTrigger className="mt-1">
-            <SelectValue placeholder="Sem label" />
+            <SelectValue placeholder="Sem label">
+              {(value: string) => value ? labels.find((l) => l.id === value)?.name : 'Sem label'}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="">Sem label</SelectItem>

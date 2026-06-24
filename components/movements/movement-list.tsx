@@ -42,7 +42,9 @@ export function MovementList({ movements, accounts, categories, labels, accountI
       <div className="flex gap-2 overflow-x-auto pb-2 mb-4">
         <Select value={typeFilter} onValueChange={(v) => updateFilter('type', v === 'all' ? '' : (v ?? ''))}>
           <SelectTrigger className="min-w-[110px] h-8 text-xs">
-            <SelectValue placeholder="Tipo" />
+            <SelectValue placeholder="Tipo">
+              {(value: string) => ({ '': 'Todos', all: 'Todos', debit: 'Débito', credit: 'Crédito' })[value] ?? 'Tipo'}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">Todos</SelectItem>
@@ -53,7 +55,9 @@ export function MovementList({ movements, accounts, categories, labels, accountI
 
         <Select value={categoryFilter} onValueChange={(v) => updateFilter('category_id', v === 'all' ? '' : (v ?? ''))}>
           <SelectTrigger className="min-w-[130px] h-8 text-xs">
-            <SelectValue placeholder="Categoria" />
+            <SelectValue placeholder="Categoria">
+              {(value: string) => (!value || value === 'all') ? 'Todas' : categories.find((c) => c.id === value)?.name}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">Todas</SelectItem>
@@ -65,7 +69,9 @@ export function MovementList({ movements, accounts, categories, labels, accountI
 
         <Select value={labelFilter} onValueChange={(v) => updateFilter('label_id', v === 'all' ? '' : (v ?? ''))}>
           <SelectTrigger className="min-w-[110px] h-8 text-xs">
-            <SelectValue placeholder="Label" />
+            <SelectValue placeholder="Label">
+              {(value: string) => (!value || value === 'all') ? 'Todas' : labels.find((l) => l.id === value)?.name}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">Todas</SelectItem>
