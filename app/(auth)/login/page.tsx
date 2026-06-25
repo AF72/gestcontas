@@ -28,7 +28,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-slate-400 p-4">
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -36,7 +36,7 @@ export default function LoginPage() {
             <span className="text-white font-bold text-xl">G</span>
           </div>
           <h1 className="text-2xl font-bold text-gray-900">GestContas</h1>
-          <p className="text-gray-500 text-sm mt-1">Gestão de finanças pessoais</p>
+          <p className="text-gray-700 text-sm mt-1">Gestão de finanças pessoais</p>
         </div>
 
         {/* Mode toggle */}
@@ -71,7 +71,7 @@ export default function LoginPage() {
               type="email"
               placeholder="email@exemplo.com"
               required
-              className="mt-1"
+              className="mt-1 placeholder:text-gray-700"
             />
           </div>
           <div>
@@ -83,7 +83,7 @@ export default function LoginPage() {
               placeholder="••••••••"
               required
               minLength={6}
-              className="mt-1"
+              className="mt-1 placeholder:text-gray-700"
             />
           </div>
 

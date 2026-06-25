@@ -13,7 +13,7 @@ export default async function AccountsPage() {
       </div>
 
       {accounts.length === 0 ? (
-        <div className="text-center py-16 text-gray-400">
+        <div className="text-center py-16 text-gray-700">
           <p className="text-sm">Ainda não tens contas.</p>
           <p className="text-xs mt-1">Toca em + para criar a primeira.</p>
         </div>

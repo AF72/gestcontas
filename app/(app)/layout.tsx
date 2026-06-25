@@ -23,7 +23,7 @@ export default async function AppLayout({
   ])
 
   return (
-    <div className="min-h-screen bg-slate-50 max-w-lg mx-auto relative">
+    <div className="min-h-screen bg-slate-400 max-w-lg mx-auto relative">
       <main className="pb-20">{children}</main>
       <TabBar />
       <BottomSheet

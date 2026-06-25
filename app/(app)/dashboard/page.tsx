@@ -44,7 +44,7 @@ export default async function DashboardPage() {
         {/* Accounts horizontal scroll */}
         {accounts.length > 0 && (
           <section>
-            <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+            <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
               Contas
             </h2>
             <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4">
@@ -57,11 +57,11 @@ export default async function DashboardPage() {
 
         {/* Recent movements */}
         <section>
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+          <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
             Recentes
           </h2>
           {recentMovements.length === 0 ? (
-            <div className="text-center py-10 text-gray-400">
+            <div className="text-center py-10 text-gray-700">
               <p className="text-sm">Ainda não tens movimentos.</p>
               <p className="text-xs mt-1">Toca em + para adicionar o primeiro.</p>
             </div>

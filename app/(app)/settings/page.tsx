@@ -38,7 +38,7 @@ export default async function SettingsPage() {
 
       {/* Categories */}
       <section>
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+        <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
           Categorias
         </h2>
         <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
@@ -67,7 +67,7 @@ export default async function SettingsPage() {
 
       {/* Labels */}
       <section>
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+        <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-3">
           Labels
         </h2>
         <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">

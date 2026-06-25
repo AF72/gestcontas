@@ -84,7 +84,7 @@ export function MovementList({ movements, accounts, categories, labels, accountI
 
       {/* List */}
       {movements.length === 0 ? (
-        <div className="text-center py-12 text-gray-400">
+        <div className="text-center py-12 text-gray-700">
           <p className="text-sm">Sem movimentos para os filtros seleccionados.</p>
         </div>
       ) : (
